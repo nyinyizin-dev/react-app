@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Image from "./assests/img-1.jpg";
 
 function App() {
+  let name = "nyi nyi";
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>hello : {name}</h1>
+      {/* 1- public folder way */}
+
+      {/* realtive path */}
+      {/* <img src="/img-1.jpg" alt="" /> */}
+      {/* absolute path */}
+      {/* <img src="http://localhost:3000/img-1.jpg" alt="" /> */}
+
+      {/* 2- import way */}
+      <img src={Image} alt="" />
     </div>
   );
 }
