@@ -17,10 +17,15 @@ function App() {
       title: "Third post",
     },
   ]);
+  console.log(posts);
 
   let changeName = () => {
     setName("nyi nyi");
     console.log(name);
+  };
+
+  let deletePost = (id) => {
+    setPosts((pre) => pre.filter((post) => post.id !== id));
   };
 
   return (
@@ -30,9 +35,14 @@ function App() {
 
       <h1>Posts</h1>
       <ul>
-        {posts.map((post) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
+        {!!posts.length &&
+          posts.map((post) => (
+            <li key={post.id}>
+              {post.title}
+              <button onClick={() => deletePost(post.id)}>delete</button>
+            </li>
+          ))}
+        {!posts.length && <p>No posts available. </p>}
       </ul>
     </div>
   );
