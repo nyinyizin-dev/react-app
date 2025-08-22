@@ -26,7 +26,7 @@ function App() {
       <Navbar setShowModel={setShowModel} />
       <PostList posts={posts} />
       {showModel && (
-        <Modal>
+        <Modal >
           <h1>Hello react</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
