@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import PostList from "./components/PostList";
+import Modal from "./components/Modal/index";
 
 function App() {
-  let [name, setName] = useState("ko ko");
+  let [showModel, setShowModel] = useState(false);
   let [posts, setPosts] = useState([
     {
       id: 1,
@@ -17,34 +20,24 @@ function App() {
       title: "Third post",
     },
   ]);
-  console.log(posts);
-
-  let changeName = () => {
-    setName("nyi nyi");
-    console.log(name);
-  };
-
-  let deletePost = (id) => {
-    setPosts((pre) => pre.filter((post) => post.id !== id));
-  };
 
   return (
-    <div className="app">
-      <h1>Hello : {name}</h1>
-      <button onClick={changeName}>change name</button>
-
-      <h1>Posts</h1>
-      <ul>
-        {!!posts.length &&
-          posts.map((post) => (
-            <li key={post.id}>
-              {post.title}
-              <button onClick={() => deletePost(post.id)}>delete</button>
-            </li>
-          ))}
-        {!posts.length && <p>No posts available. </p>}
-      </ul>
-    </div>
+    <>
+      <Navbar setShowModel={setShowModel} />
+      <PostList posts={posts} />
+      {showModel && (
+        <Modal>
+          <h1>Hello react</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+            quaerat enim tenetur, qui laboriosam quae vel sunt officiis animi
+            amet doloribus suscipit beatae aliquid. Laudantium fugiat autem
+            voluptate nesciunt nam!
+          </p>
+          <button onClick={() => setShowModel(false)}>close</button>
+        </Modal>
+      )}
+    </>
   );
 }
 
