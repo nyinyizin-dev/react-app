@@ -3,6 +3,7 @@ import "./index.css";
 
 export default function PostForm({ addPost }) {
   let [title, setTitle] = useState("");
+  let [status, setStatus] = useState("upcoming");
 
   let resetForm = () => {
     setTitle("");
@@ -14,9 +15,10 @@ export default function PostForm({ addPost }) {
     let post = {
       id: Math.floor(Math.random() * 10000),
       title,
+      status
     };
     resetForm();
-   console.log(post);
+    console.log(post);
     addPost(post);
   };
 
@@ -30,6 +32,20 @@ export default function PostForm({ addPost }) {
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
+      </div>
+
+      <div className="form-control">
+        <label htmlFor="">Status</label>
+        <select
+          name=""
+          id=""
+          value={status}
+          onChange={(e) => setStatus(e.target.value)}
+        >
+          <option value="dropped">Dropped</option>
+          <option value="ongoing">Ongoing</option>
+          <option value="upcoming">Upcoming</option>
+        </select>
       </div>
 
       <div className="form-control">
